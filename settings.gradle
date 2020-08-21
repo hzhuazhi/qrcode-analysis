@@ -1,0 +1,2 @@
+rootProject.name = 'qrcode-analysis'
+include 'qrcode-analysis-master'
