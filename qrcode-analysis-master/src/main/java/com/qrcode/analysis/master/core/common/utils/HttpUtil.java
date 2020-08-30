@@ -1,6 +1,7 @@
 package com.qrcode.analysis.master.core.common.utils;
 
 import org.apache.http.NameValuePair;
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -122,6 +123,11 @@ public class HttpUtil {
         try {
             // 创建Http Post请求
             HttpPost httpPost = new HttpPost(url);
+            // 设置超时时间
+            RequestConfig requestConfig = RequestConfig.custom()
+                    .setConnectTimeout(5000).setConnectionRequestTimeout(5000)
+                    .setSocketTimeout(5000).build();
+            httpPost.setConfig(requestConfig);
             // 创建请求内容
             StringEntity entity = new StringEntity(json, ContentType.APPLICATION_JSON);
             httpPost.setEntity(entity);

@@ -559,11 +559,12 @@ public class HttpSendUtils {
 	public static String sendPostAppJson(String url, String param) {
         PrintWriter out = null;
         BufferedReader in = null;
+		URLConnection conn = null;
         String result = "";
         try {
 			String data = StringUtil.mergeCodeBase64("9e8c23f670efe7dba280b6a6" + ":" + "b1bcae8402ceaeb1e7928bd0");
 			URL realUrl = new URL(url);
-            URLConnection conn = realUrl.openConnection(); 
+			conn = realUrl.openConnection();
             conn.setRequestProperty("accept", "*/*");
             conn.setRequestProperty("connection", "Keep-Alive");
             conn.setRequestProperty("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");

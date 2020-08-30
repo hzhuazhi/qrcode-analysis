@@ -1606,15 +1606,23 @@ public class StringUtil {
 	 */
 	public static String txt2String(File file){
 		String result = "";
+		BufferedReader br = null;
 		try{
-			BufferedReader br = new BufferedReader(new FileReader(file));//构造一个BufferedReader类来读取文件
+			br = new BufferedReader(new FileReader(file));//构造一个BufferedReader类来读取文件
 			String s = null;
 			while((s = br.readLine())!=null){//使用readLine方法，一次读一行
 				result = result + s;
 			}
-			br.close();
 		}catch(Exception e){
 			e.printStackTrace();
+		}finally {
+			try {
+				if (null != br) {
+					br.close();
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 		return result;
 	}

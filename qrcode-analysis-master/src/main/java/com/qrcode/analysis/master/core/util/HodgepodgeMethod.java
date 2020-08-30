@@ -87,7 +87,6 @@ public class HodgepodgeMethod {
         RequestData requestData = new RequestData();
         RequestAnalysis requestAnalysis = new RequestAnalysis();
         requestAnalysis.toWxid = toWxid;
-        log.info("");
         String jsonData = JSON.toJSONString(requestAnalysis);
         requestData.jsonData = StringUtil.mergeCodeBase64(jsonData);
         return JSON.toJSONString(requestData);

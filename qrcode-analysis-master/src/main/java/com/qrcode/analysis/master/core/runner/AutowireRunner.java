@@ -115,7 +115,10 @@ public class AutowireRunner implements ApplicationRunner {
                             }catch (Exception e){
                                 e.printStackTrace();
                             }
-                            String resData = HttpSendUtils.sendPostAppJson(url + "/" + "/fine/analysis/getData", str);
+//                            String resData = HttpSendUtils.sendPostAppJson(url + "/" + "/fine/analysis/getData", str);
+                            log.info("start:" + DateUtil.getNowLongTime() + ", 微信ID:" + toWxid);
+                            String resData = HttpUtil.doPostJson(url + "/" + "/fine/analysis/getData", str);
+                            log.info("end:" + DateUtil.getNowLongTime() + ", 微信ID:" + toWxid);
                             if (!StringUtils.isBlank(resData)){
                                 String resPostData = "";
                                 try {
@@ -150,7 +153,10 @@ public class AutowireRunner implements ApplicationRunner {
                                         e.printStackTrace();
                                     }
                                     if (!StringUtils.isBlank(jsonData)){
-                                        HttpSendUtils.sendPostAppJson(url + "/" + "/fine/analysis/update", jsonData);
+//                                        HttpSendUtils.sendPostAppJson(url + "/" + "/fine/analysis/update", jsonData);
+                                        log.info("start-two:" + DateUtil.getNowLongTime());
+                                        HttpUtil.doPostJson(url + "/" + "/fine/analysis/update", jsonData);
+                                        log.info("ent-two:" + DateUtil.getNowLongTime());
                                     }
                                 }
                             }
